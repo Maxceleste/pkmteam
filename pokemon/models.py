@@ -49,12 +49,55 @@ class CadastroPokemon(models.Model):
 
     hp = models.IntegerField(
         verbose_name = 'Valor da vida do pokémon',
-        help_text = '87'
+        help_text = 'Ex: 87'
     )
 
     ataque = models.IntegerField(
         verbose_name = 'Valor de ataque do pokémon',
-        help_text = '55'
+        help_text = 'Ex: 55'
+    )
+
+    defesa = models.IntegerField(
+        verbose_name = 'Valor de defesa do pokémon',
+        help_text = 'Ex: 76'
+    )
+
+    ataque_especial = models.IntegerField(
+        verbose_name = 'Valor do Sp.Atk (ataque especial) do pokémon',
+        help_text = 'Ex: 34'
+    )
+
+    defesa_especial = models.IntegerField(
+        verbose_name = 'Valor do Sp.Def (defesa especial) do pokémon',
+        help_text = 'Ex: 45'
+    )
+
+    habilidade_1 = models.CharField(
+        verbose_name = 'Primeira habilidade',
+        help_text = 'Ex: Calda de ferro',
+        max_length = 50,
+        error_messages = {'required' : 'Por favor, insira essa habilidade do pokémon.'},
+    )
+
+    habilidade_2 = models.CharField(
+        verbose_name = 'Segunda habilidade',
+        help_text = 'Ex: Chute duplo',
+        max_length = 50,
+        error_messages = {'required' : 'Por favor, insira essa habilidade do pokémon.'},
+    )
+
+    habilidade_3 = models.CharField(
+        verbose_name = 'Terceira habilidade',
+        help_text = 'Ex: Endurecer',
+        max_length = 50,
+        error_messages = {'required' : 'Por favor, insira essa habilidade do pokémon.'},
+    )
+
+    habilidade_4 = models.CharField(
+        verbose_name = 'Quarta habilidade',
+        help_text = 'Ex: Investida',
+        max_length = 50,
+        error_messages = {'required' : 'Por favor, insira essa habilidade do pokémon.'},
     )
 
 
