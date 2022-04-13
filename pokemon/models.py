@@ -100,4 +100,16 @@ class CadastroPokemon(models.Model):
         error_messages = {'required' : 'Por favor, insira essa habilidade do pokémon.'},
     )
 
+    imagem_pokemon = models.ImageField(
+        verbose_name = 'Imagem do pokémon inteiro',
+        upload_to = 'imagens/imagem_inteira',
+        blank = True    
+    )
+
+    pixel_pokemon = models.ImageField(
+        verbose_name = 'Imagem do pokémon em pixel',
+        upload_to = 'imagens/pixel',
+        blank = True
+    )
+
 

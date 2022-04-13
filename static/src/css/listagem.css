@@ -56,7 +56,7 @@ nav::-webkit-scrollbar-thumb {
 
 .listagem .pokemon img {
     width: 25%;
-    border-radius: 50%;
+    
 }
 
 .listagem .pokemon span {
