@@ -1,3 +1,4 @@
+from argparse import HelpFormatter
 from itertools import tee
 from django.db import models
 from django.core.validators import RegexValidator
@@ -72,6 +73,11 @@ class CadastroPokemon(models.Model):
         help_text = 'Ex: 45'
     )
 
+    velocidade = models.IntegerField(
+        verbose_name = 'Velocidade',
+        help_text = 'Ex: 75'
+    )
+
     habilidade_1 = models.CharField(
         verbose_name = 'Primeira habilidade',
         help_text = 'Ex: Calda de ferro',
@@ -110,6 +116,12 @@ class CadastroPokemon(models.Model):
         verbose_name = 'Imagem do pokémon em pixel',
         upload_to = 'imagens/pixel',
         blank = True
+    )
+
+    publicado = models.BooleanField(
+        default = False,
+        verbose_name = 'Publicado',
+        help_text = 'Marque a opção se quer que o pokémon seja exibido no site.'
     )
 
 

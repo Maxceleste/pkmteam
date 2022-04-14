@@ -1,6 +1,10 @@
 from django.contrib import admin
 from .models import CadastroPokemon
 
-# Register your models here.
+class DisplayPokemon(admin.ModelAdmin):
+    list_display = ('numero_pokedex', 'nome', 'tipo_1', 'tipo_2', 'publicado',)
+    list_display_links = ('numero_pokedex', 'nome',)
+    search_fields = ('nome',)
+    list_per_page = 20
 
-admin.site.register(CadastroPokemon)
+admin.site.register(CadastroPokemon, DisplayPokemon)
