@@ -78,36 +78,37 @@
             </div>
           </div>
 
-          <!-- cartao de pokemon para adicionar pokemons -->
+          {% for pokemon in lista_pokemon %}
 
-          <div class="cartao-pokemon tipo-grama" id = "cartao-bulbasaur">
+          <div class="cartao-pokemon tipo-{{ pokemon.tipo_1 }}" id = "cartao-{{pokemon.id}}">
             <div class="cartao-topo">
               <div class="detalhes">
-                <h2 class="nome">Bulbasaur</h2>
-                <span>#001</span>
+                <h2 class="nome">{{ pokemon.nome }}</h2>
+                <span>#{{ pokemon.numero_pokedex }}</span>
               </div>
-              <span class="tipo">Grama</span>
-              <span class="tipo">Veneno</span>
+              {% if pokemon.tipo_2 == Null %}
+              <span class="tipo">{{ pokemon.tipo_1 }}</span>
+              {% else %}
+              <span class="tipo">{{ pokemon.tipo_1 }}</span>
+              <span class="tipo">{{ pokemon.tipo_2 }}</span>
+              {% endif %}
+              
               <div class="cartao-imagem">
-                <img
-                  src="{% static '/src/imagens/bulbasaur.png' %}"
-                  alt="imagem do Bulbasaur"
-                />
+                <img src="{{ pokemon.imagem_pokemon.url }}" />
               </div>
             </div>
-
             <div class="cartao-informacoes">
               <div class="status">
                 <h3>Status</h3>
 
                 <ul>
-                  <li>HP: 45</li>
-                  <li>Ataque: 49</li>
-                  <li>Defesa: 49</li>
-                  <li>Sp.Atk: 65</li>
-                  <li>Sp.Def: 65</li>
-                  <li>Velocidade: 45</li>
-                  <li>Total: 318</li>
+                  <li>HP: {{ pokemon.hp }}</li>
+                  <li>Ataque: {{ pokemon.ataque }}</li>
+                  <li>Defesa: {{ pokemon.defesa }}</li>
+                  <li>Sp.Atk: {{ pokemon.ataque_especial }}</li>
+                  <li>Sp.Def: {{ pokemon.defesa_especial }}</li>
+                  <li>Velocidade: {{ pokemon.velocidade }}</li>
+                  <li>Total: </li>
                 </ul>
               </div>
 
@@ -115,16 +116,16 @@
                 <h3>Habilidades</h3>
 
                 <ul>
-                  <li>Razor Leaf</li>
-                  <li>Poison Powder</li>
-                  <li>Sleep Powder</li>
-                  <li>SolarBeam</li>
+                  <li>{{ pokemon.habilidade_1 }}</li>
+                  <li>{{ pokemon.habilidade_2 }}</li>
+                  <li>{{ pokemon.habilidade_3 }}</li>
+                  <li>{{ pokemon.habilidade_4 }}</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <!-- até aqui para copiar o cartão -->
+          {% endfor %}
 
           
         
@@ -137,11 +138,12 @@
                   <img src="{{ primeiro_pokemon.pixel_pokemon.url }}" >
                   <span>{{ primeiro_pokemon.nome }}</span>
                 </li>
-
-                <li class="pokemon" id = "bulbasaur">
-                  <img src="{% static '/src/imagens/cabeca-pikachu.png' %}" >
-                  <span>Padrão</span>
+                {% for pokemon in lista_pokemon %}
+                <li class="pokemon" id = "{{ pokemon.id }}">
+                  <img src="{{ pokemon.pixel_pokemon.url }}" >
+                  <span>{{ pokemon.nome }}</span>
                 </li>
+                {% endfor %}
 
             </ul>
         </nav>
