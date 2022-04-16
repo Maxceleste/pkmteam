@@ -26,19 +26,27 @@
       <img src="{% static '/src/imagens-style/Pokédex_logo.png' %}" alt="logo da pokedex">
     </div>
     <main class="back">
+
+      {% if lista_pokemon %}
       
       <div class="pokedex">
         
         <div class="cartoes-pokemon">
-          <div class="cartao-pokemon aberto tipo-eletrico" id = "cartao-pikachu">
+          <div class="cartao-pokemon aberto tipo-{{ primeiro_pokemon.tipo_1 }}" id = "cartao-{{ primeiro_pokemon.id }}">
             <div class="cartao-topo">
               <div class="detalhes">
-                <h2 class="nome">Pikachu</h2>
-                <span>#025</span>
+                <h2 class="nome">{{ primeiro_pokemon.nome }}</h2>
+                <span>#{{ primeiro_pokemon.numero_pokedex }}</span>
               </div>
-              <span class="tipo">Elétrico</span>
+              {% if primeiro_pokemon.tipo_2 == '' %}
+              <span class="tipo">{{ primeiro_pokemon.tipo_1 }}</span>
+              {% else %}
+              <span class="tipo">{{ primeiro_pokemon.tipo_1 }}</span>
+              <span class="tipo">{{ primeiro_pokemon.tipo_2 }}</span>
+              {% endif %}
+              
               <div class="cartao-imagem">
-                <img src="{% static '/src/imagens/pikachu.png' %}" alt="imagem do pikachu" />
+                <img src="{{ primeiro_pokemon.imagem_pokemon.url }}" />
               </div>
             </div>
 
@@ -47,13 +55,13 @@
                 <h3>Status</h3>
 
                 <ul>
-                  <li>HP: 35</li>
-                  <li>Ataque: 55</li>
-                  <li>Defesa: 40</li>
-                  <li>Sp.Atk: 50</li>
-                  <li>Sp.Def: 50</li>
-                  <li>Velocidade: 90</li>
-                  <li>Total: 320</li>
+                  <li>HP: {{ primeiro_pokemon.hp }}</li>
+                  <li>Ataque: {{ primeiro_pokemon.ataque }}</li>
+                  <li>Defesa: {{ primeiro_pokemon.defesa }}</li>
+                  <li>Sp.Atk: {{ primeiro_pokemon.ataque_especial }}</li>
+                  <li>Sp.Def: {{ primeiro_pokemon.defesa_especial }}</li>
+                  <li>Velocidade: {{ primeiro_pokemon.velocidade }}</li>
+                  <li>Total: </li>
                 </ul>
               </div>
 
@@ -61,10 +69,10 @@
                 <h3>Habilidades</h3>
 
                 <ul>
-                  <li>Choque do trovão</li>
-                  <li>Ataque Rápido</li>
-                  <li>Agilidade</li>
-                  <li>Trovão</li>
+                  <li>{{ primeiro_pokemon.habilidade_1 }}</li>
+                  <li>{{ primeiro_pokemon.habilidade_2 }}</li>
+                  <li>{{ primeiro_pokemon.habilidade_3 }}</li>
+                  <li>{{ primeiro_pokemon.habilidade_4 }}</li>
                 </ul>
               </div>
             </div>
@@ -125,20 +133,23 @@
         <nav class="listagem scroll">
             <ul class="">
 
-                <li class="pokemon" id = "bulbasaur">
-                  <img src="{% static '/src/imagens/cabeca-bulbasaur.png' %}" alt="Imagem da cabeça do bulbasaur">
-                  <span>Bulbasaur</span>
+                <li class="pokemon ativo" id = "{{ primeiro_pokemon.id }}">
+                  <img src="{{ primeiro_pokemon.pixel_pokemon.url }}" >
+                  <span>{{ primeiro_pokemon.nome }}</span>
                 </li>
 
-                <li class="pokemon ativo" id = "pikachu">
-                  <img src="{% static '/src/imagens/cabeca-pikachu.png' %}" alt="Imagem da cabeça do pikachu">
-                  <span>Pikachu</span>
+                <li class="pokemon" id = "bulbasaur">
+                  <img src="{% static '/src/imagens/cabeca-pikachu.png' %}" >
+                  <span>Padrão</span>
                 </li>
 
             </ul>
         </nav>
 
       </div>
+      {% else %}
+      <h2 style="color: #7f70ff; background-color: #000000;">Não há pokémon adicionados.</h2>
+      {% endif %}
 
       <a href="https://www.linkedin.com/in/wesleyrioos/" target="_blank">
         <img src="{% static '/src/imagens-style/LinkedIn-símbolo.jpg' %}" alt="" class="linkedin-logo">

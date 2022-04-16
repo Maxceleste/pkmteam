@@ -124,4 +124,7 @@ class CadastroPokemon(models.Model):
         help_text = 'Marque a opção se quer que o pokémon seja exibido no site.'
     )
 
+    def __str__(self):
+        return self.nome
+
 
