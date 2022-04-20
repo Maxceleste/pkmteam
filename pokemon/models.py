@@ -24,11 +24,10 @@ class CadastroPokemon(models.Model):
         error_messages = {'required' : 'Por favor, insira o nome do Pokémon.'},
         )
 
-    numero_pokedex = models.CharField(
+    numero_pokedex = models.IntegerField(
         verbose_name = 'Número da Pokédex',
-        max_length = 3,
-        help_text = 'Ex: 001',
-        validators=[ RegexValidator(r'^\d\d\d$', message = 'Insira um número válido.')  ],
+        help_text = 'Ex: 1, 10, 100',
+        error_messages = {'required' : 'É necessário escolher o número da pokedex.'},
     )
 
     tipo_1 = models.CharField(
@@ -104,18 +103,6 @@ class CadastroPokemon(models.Model):
         help_text = 'Ex: Investida',
         max_length = 50,
         error_messages = {'required' : 'Por favor, insira essa habilidade do pokémon.'},
-    )
-
-    imagem_pokemon = models.ImageField(
-        verbose_name = 'Imagem do pokémon inteiro',
-        upload_to = 'imagens/imagem_inteira',
-        blank = True    
-    )
-
-    pixel_pokemon = models.ImageField(
-        verbose_name = 'Imagem do pokémon em pixel',
-        upload_to = 'imagens/pixel',
-        blank = True
     )
 
     publicado = models.BooleanField(

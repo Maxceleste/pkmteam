@@ -46,7 +46,7 @@
               {% endif %}
               
               <div class="cartao-imagem">
-                <img src="{{ primeiro_pokemon.imagem_pokemon.url }}" />
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/{{primeiro_pokemon.numero_pokedex}}.png" />
               </div>
             </div>
 
@@ -94,7 +94,7 @@
               {% endif %}
               
               <div class="cartao-imagem">
-                <img src="{{ pokemon.imagem_pokemon.url }}" />
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/{{pokemon.numero_pokedex}}.png" />
               </div>
             </div>
             <div class="cartao-informacoes">
@@ -135,12 +135,12 @@
             <ul class="">
 
                 <li class="pokemon ativo" id = "{{ primeiro_pokemon.id }}">
-                  <img src="{{ primeiro_pokemon.pixel_pokemon.url }}" >
+                  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{primeiro_pokemon.numero_pokedex}}.png" >
                   <span>{{ primeiro_pokemon.nome }}</span>
                 </li>
                 {% for pokemon in lista_pokemon %}
                 <li class="pokemon" id = "{{ pokemon.id }}">
-                  <img src="{{ pokemon.pixel_pokemon.url }}" >
+                  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{pokemon.numero_pokedex}}.png" >
                   <span>{{ pokemon.nome }}</span>
                 </li>
                 {% endfor %}
