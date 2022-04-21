@@ -72,54 +72,74 @@
     display: block;
 }
 
-.tipo-fogo {
+.tipo-Fire {
     background-color: #ED8A8B;
 }
 
-.tipo-eletrico{
+.tipo-Electric{
     background-color: #FCC719;
 }
 
-.tipo-agua {
+.tipo-Water {
     background-color: #76BEFE;
 }
 
-.tipo-grama {
+.tipo-Grass {
     background-color: #49D0B0;
 }
 
-.tipo-fantasma {
+.tipo-Ghost {
     background-color: #426A9E;
 }
 
-.tipo-dragao {
+.tipo-Dragon {
     background-color: #C29791;
 }
 
-.tipo-inseto {
+.tipo-Bug {
     background-color: #badc58;
 }
 
-.tipo-veneno {
+.tipo-Poison {
     background-color: #6D2267;
 }
 
-.tipo-terra {
+.tipo-Ground {
     background-color: #E0C890;
 }
 
-.tipo-metal {
+.tipo-Steel {
     background-color: #C3C1C3;
 }
 
-.tipo-normal {
+.tipo-Normal {
     background-color: #A7B4AE;
 }
 
-.tipo-voador {
+.tipo-Flying {
     background-color: #6098BE;
 }
 
-.tipo-lutador {
+.tipo-Fighting {
     background-color: #A43828;
+}
+
+.tipo-Dark {
+    background-color: #6B727A;
+}
+
+.tipo-Fairy {
+    background-color: #f341f3;
+}
+
+.tipo-Ice {
+    background-color: #76BEFE;
+}
+
+.tipo-Psychic {
+    background-color: #e4385a;
+}
+
+.tipo-Rock {
+    background-color: #424f5e;
 }

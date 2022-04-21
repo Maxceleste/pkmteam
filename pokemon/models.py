@@ -1,28 +1,15 @@
-from argparse import HelpFormatter
-from itertools import tee
 from django.db import models
-from django.core.validators import RegexValidator
 from .pokeapi import PokemonAPI
 
 class CadastroPokemon(models.Model):
-
-    tipos_dos_pokemons =(
-        ('normal', 'Normal'), ('fogo', 'Fogo'),
-        ('agua', 'Água'), ('grama', 'Grama'),
-        ('voador', 'Voador'), ('lutador', 'Lutador'),
-        ('veneno', 'Veneno'), ('eletrico', 'Elétrico'),
-        ('terra', 'Terra'), ('pedra', 'Pedra'),
-        ('psiquico', 'Psíquico'), ('gelo', 'Gelo'),
-        ('inseto', 'Inseto'), ('fantasma', 'Fantasma'),
-        ('ferro', 'Ferro'), ('dragao', 'Dragão'),
-        ('sombrio', 'Sombrio'), ('fada', 'Fada')
-    )
 
     nome = models.CharField(
         verbose_name = 'Nome do Pokémon',
         max_length = 100,
         help_text = 'Ex: Blaziken',
         error_messages = {'required' : 'Por favor, insira o nome do Pokémon.'},
+        default = 'Missigno',
+        editable = False
         )
 
     numero_pokedex = models.IntegerField(
@@ -34,18 +21,19 @@ class CadastroPokemon(models.Model):
     tipo_1 = models.CharField(
         verbose_name = 'Primeiro tipo',
         help_text = 'Escolha um tipo para o pokémon',
-        choices = tipos_dos_pokemons,
         error_messages = {'required' : 'É necessário escolher o primeiro tipo.'},
-        max_length = 50
+        max_length = 50,
+        editable = False,
+        default = 'Normal'
     )
 
     tipo_2 = models.CharField(
         verbose_name = 'Segundo tipo',
         help_text = 'Escolha o segundo tipo para o pokémon, se necessário',
-        choices = tipos_dos_pokemons,
         null = True,
         blank = True,
-        max_length = 50
+        max_length = 50,
+        editable = False
     )
 
     hp = models.IntegerField(
@@ -142,7 +130,17 @@ class CadastroPokemon(models.Model):
             ataque_especial_api = PokemonAPI().get_status('ataque_especial', self.numero_pokedex)
             defesa_especial_api = PokemonAPI().get_status('defesa_especial', self.numero_pokedex)
             velocidade_api = PokemonAPI().get_status('velocidade', self.numero_pokedex)
+            nome_api = PokemonAPI().get_name(self.numero_pokedex)
 
+            tipo_api = PokemonAPI().get_types(self.numero_pokedex)
+
+            self.tipo_1 = tipo_api[0].capitalize()
+            if len(tipo_api) == 2:
+                self.tipo_2 = tipo_api[1].capitalize()
+            
+
+
+            self.nome = nome_api.capitalize()
             self.hp = hp_api
             self.ataque = ataque_api
             self.defesa = defesa_api
