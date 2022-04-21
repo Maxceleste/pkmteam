@@ -2,6 +2,7 @@ from argparse import HelpFormatter
 from itertools import tee
 from django.db import models
 from django.core.validators import RegexValidator
+from .pokeapi import PokemonAPI
 
 class CadastroPokemon(models.Model):
 
@@ -49,32 +50,50 @@ class CadastroPokemon(models.Model):
 
     hp = models.IntegerField(
         verbose_name = 'Valor da vida do pokémon',
-        help_text = 'Ex: 87'
+        help_text = 'Ex: 87',
+        default = 50,
+        editable = False
     )
 
     ataque = models.IntegerField(
         verbose_name = 'Valor de ataque do pokémon',
-        help_text = 'Ex: 55'
+        help_text = 'Ex: 55',
+        default = 50,
+        editable = False
     )
 
     defesa = models.IntegerField(
         verbose_name = 'Valor de defesa do pokémon',
-        help_text = 'Ex: 76'
+        help_text = 'Ex: 76',
+        default = 50,
+        editable = False
     )
 
     ataque_especial = models.IntegerField(
         verbose_name = 'Valor do Sp.Atk (ataque especial) do pokémon',
-        help_text = 'Ex: 34'
+        help_text = 'Ex: 34',
+        default = 50,
+        editable = False
     )
 
     defesa_especial = models.IntegerField(
         verbose_name = 'Valor do Sp.Def (defesa especial) do pokémon',
-        help_text = 'Ex: 45'
+        help_text = 'Ex: 45',
+        default = 50,
+        editable = False
     )
 
     velocidade = models.IntegerField(
         verbose_name = 'Velocidade',
-        help_text = 'Ex: 75'
+        help_text = 'Ex: 75',
+        default = 50,
+        editable = False
+    )
+
+    total = models.IntegerField(
+        verbose_name = 'Total',
+        default = 300,
+        editable = False
     )
 
     habilidade_1 = models.CharField(
@@ -108,10 +127,32 @@ class CadastroPokemon(models.Model):
     publicado = models.BooleanField(
         default = False,
         verbose_name = 'Publicado',
-        help_text = 'Marque a opção se quer que o pokémon seja exibido no site.'
+        help_text = 'Marque a opção se quer que o pokémon seja exibido no site.',
+        
     )
 
     def __str__(self):
         return self.nome
+
+    def save(self, *args, **kwargs):
+        try:
+            hp_api = PokemonAPI().get_status('hp', self.numero_pokedex)
+            ataque_api = PokemonAPI().get_status('ataque', self.numero_pokedex)
+            defesa_api = PokemonAPI().get_status('defesa', self.numero_pokedex)
+            ataque_especial_api = PokemonAPI().get_status('ataque_especial', self.numero_pokedex)
+            defesa_especial_api = PokemonAPI().get_status('defesa_especial', self.numero_pokedex)
+            velocidade_api = PokemonAPI().get_status('velocidade', self.numero_pokedex)
+
+            self.hp = hp_api
+            self.ataque = ataque_api
+            self.defesa = defesa_api
+            self.ataque_especial = ataque_especial_api
+            self.defesa_especial = defesa_especial_api
+            self.velocidade = velocidade_api
+            self.total = hp_api + ataque_api + defesa_api + ataque_especial_api + defesa_especial_api + velocidade_api
+
+            super().save(*args, **kwargs)
+        except:
+            super().save(*args, **kwargs)
 
 
