@@ -39,11 +39,11 @@
                 <h2 class="nome">{{ primeiro_pokemon.nome }}</h2>
                 <span>#{{ primeiro_pokemon.numero_pokedex }}</span>
               </div>
-              {% if primeiro_pokemon.tipo_2 == '' %}
-              <span class="tipo">{{ primeiro_pokemon.tipo_1 }}</span>
-              {% else %}
+              {% if primeiro_pokemon.tipo_2 %}
               <span class="tipo">{{ primeiro_pokemon.tipo_1 }}</span>
               <span class="tipo">{{ primeiro_pokemon.tipo_2 }}</span>
+              {% else %}
+              <span class="tipo">{{ primeiro_pokemon.tipo_1 }}</span>
               {% endif %}
               
               <div class="cartao-imagem">
