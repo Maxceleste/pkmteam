@@ -1,5 +1,14 @@
 # Pkm Team
 
+
+
+[![Maxceleste - pkmteam](https://img.shields.io/static/v1?label=Maxceleste&message=pkmteam&color=green&logo=github)](https://github.com/Maxceleste/pkmteam "Go to GitHub repo")
+[![stars - pkmteam](https://img.shields.io/github/stars/Maxceleste/pkmteam?style=social)](https://github.com/Maxceleste/pkmteam)
+[![forks - pkmteam](https://img.shields.io/github/forks/Maxceleste/pkmteam?style=social)](https://github.com/Maxceleste/pkmteam)
+[![GitHub release](https://img.shields.io/github/release/Maxceleste/pkmteam?include_prereleases=&sort=semver&color=green)](https://github.com/Maxceleste/pkmteam/releases/)
+[![License](https://img.shields.io/badge/License-MIT-green)](#license)
+
+
 Pkm Team é um site que exibe uma lista de pokémon adicionados no banco de dados pelos administradores do site. Quando é selecionado um pokémon, um card se abre com as informações do mesmo, exibindo seu nome, número da pokédex, seus tipos, status e habilidades. O administrador do site apenas precisa inserir no admin o número da pokédex e as habilidades. O resto é tudo obtido sozinho consumindo a API [Pokéapi](https://pokeapi.co/) de forma automática com o save do banco de dados customizado.
 
 ## Acessando o site
