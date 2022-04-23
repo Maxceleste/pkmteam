@@ -7,18 +7,12 @@ background-repeat: no-repeat;
 padding-bottom: 10px;
 }
 
-.linkedin-logo {
-    width: 60px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
 
   .github-logo {
     width: 60px;
     height: 30px;
     position: absolute;
-    top: 55px;
+    top: 10px;
     right: 10px;
   }
 
