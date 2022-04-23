@@ -87,11 +87,11 @@
                 <h2 class="nome">{{ pokemon.nome }}</h2>
                 <span>#{{ pokemon.numero_pokedex }}</span>
               </div>
-              {% if pokemon.tipo_2 == Null %}
-              <span class="tipo">{{ pokemon.tipo_1 }}</span>
-              {% else %}
+              {% if pokemon.tipo_2 %}
               <span class="tipo">{{ pokemon.tipo_1 }}</span>
               <span class="tipo">{{ pokemon.tipo_2 }}</span>
+              {% else %}
+              <span class="tipo">{{ pokemon.tipo_1 }}</span>
               {% endif %}
               
               <div class="cartao-imagem">
