@@ -1,0 +1,23 @@
+.back {
+margin-top: -55px;
+background-image: url("../imagens-style/pokeball-planetx-wallpaper.bc1dbb330cb6.png");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+padding-bottom: 10px;
+}
+
+.frontend-logo {
+    position: absolute;
+  }
+  
+.backend-logo {
+    position: absolute;
+  }
+
+.topo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    background-color: #090324;
+}
