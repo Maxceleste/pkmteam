@@ -53,7 +53,7 @@ MIDDLEWARE = [
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
-
+DEBUG_PROPAGATE_EXCEPTIONS = config('ERRORS_DEBUG', cast=bool)
 
 ROOT_URLCONF = 'pokedex.urls'
 

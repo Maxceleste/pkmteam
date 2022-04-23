@@ -6,5 +6,6 @@ class DisplayPokemon(admin.ModelAdmin):
     list_display_links = ('numero_pokedex', 'nome',)
     search_fields = ('nome',)
     list_per_page = 20
+    list_editable = ('publicado',)
 
 admin.site.register(CadastroPokemon, DisplayPokemon)

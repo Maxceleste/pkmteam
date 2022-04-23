@@ -1,3 +1,8 @@
+.texto-sem-pokemons {
+    color: #7f70ff;
+    background-color: #000000;
+}
+
 .cartao-pokemon {
     margin-top: 20px;
     display: none;

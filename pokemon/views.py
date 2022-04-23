@@ -2,13 +2,12 @@ from django.shortcuts import render
 from .models import CadastroPokemon
 
 def index (request):
-    lista_pokemon_completa = CadastroPokemon.objects.order_by('numero_pokedex').filter(publicado=True)
+    lista_pokemon = CadastroPokemon.objects.order_by('numero_pokedex').filter(publicado=True)
     
-    primeiro_pokemon = lista_pokemon_completa.first()
-    
-    lista_pokemon = lista_pokemon_completa.exclude(id = primeiro_pokemon.id)
-    
+    primeiro_pokemon = lista_pokemon.first()
 
+    if primeiro_pokemon != None:
+        lista_pokemon = lista_pokemon.exclude(id = primeiro_pokemon.id)
     
 
     dados = {
